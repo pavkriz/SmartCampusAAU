@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<GroundOverlay>
+	<name>Krizovi</name>
+	<drawOrder>5</drawOrder>
+	<Icon>
+		<href>krizovi_rot.png</href>
+		<viewBoundScale>0.75</viewBoundScale>
+	</Icon>
+	<LatLonBox>
+		<north>50.21697008295825</north>
+		<south>50.21682734120151</south>
+		<east>15.84957138004888</east>
+		<west>15.84935296275057</west>
+	</LatLonBox>
+</GroundOverlay>
+</kml>

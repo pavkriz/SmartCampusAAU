@@ -31,6 +31,7 @@ import com.smartcampus.indoormodel.Building;
 import com.smartcampus.indoormodel.graph.IGraph;
 import com.smartcampus.indoormodel.graph.Vertex;
 import com.smartcampus.wifi.WifiMeasurement;
+import android.util.Log;
 
 /**
  * This class functions as a 'Wi-Fi positioning engine'. That is, it takes care of computing location estimates 
@@ -129,11 +130,17 @@ public class WifiPosEngine {
 		//but we override that logic here since this implementation considers the global 
 		//candidates - not just the local primary- or secondary candidates. 
 		//We throw in an extra 5 meters to account for movement
-		double error = Math.ceil(BestCandidateSet.getDistanceToNthHighest(3)); //  + 5;
-		bestEstimate.setErrorEstimate(error);
-		bestEstimate.setBcsScores(BestCandidateSet.getAllScoresSorted());
-		bestEstimate.setBcsVertices(BestCandidateSet.getAllVerticesSorted());
-		return bestEstimate;
+
+		try {
+			double error = Math.ceil(BestCandidateSet.getDistanceToNthHighest(3)); //  + 5;
+			bestEstimate.setErrorEstimate(error);
+			bestEstimate.setBcsScores(BestCandidateSet.getAllScoresSorted());
+			bestEstimate.setBcsVertices(BestCandidateSet.getAllVerticesSorted());
+			return bestEstimate;
+		} catch (Exception e) {
+			Log.e(this.getClass().getSimpleName(), "Exception: "+Log.getStackTraceString(e));
+			return null;
+		}
     }
 	
 	public void setCurrentBuilding(Building currentBuilding)

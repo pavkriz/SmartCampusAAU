@@ -66,9 +66,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ImageView.ScaleType;
+import android.util.Log;
 
 public abstract class WebMap2D extends Activity {
-	
+
+    private static final String TAG = WebMap2D.class.getName();
 		
 	//callback for when the map has been loaded. 
 	protected class MapReadyReceiver extends BroadcastReceiver {		
@@ -105,7 +107,7 @@ public abstract class WebMap2D extends Activity {
 	
 	//Denotes the last known location estimate - regardless of provider
 	protected static Location lastKnownLocation;
-    private static final String DEFAULT_TILE_URL = "http://smartcampus.cs.aau.dk/tiles/sl300/no_tiles.php"; //TODO: Add folia maps url
+    private static final String DEFAULT_TILE_URL = "http://beacon.uhk.cz/webview/index.html";
                   
     protected WebView webView;
     //private Button button1;
@@ -412,6 +414,7 @@ public abstract class WebMap2D extends Activity {
         sbUrl.append("?t=").append(System.currentTimeMillis());
         
         String url = sbUrl.toString();
+        Log.d(TAG, "WebView loadUrl: "+url);
         webView.loadUrl(url);       
 	}
 

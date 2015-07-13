@@ -27,7 +27,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.smartcampus.android.ui.maps.online;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -1376,9 +1378,13 @@ public class WebMap2DOnline extends WebMap2D {
 	    		}	    		
     		}
     		if (showNewLocation)
-    		{				
+    		{
+				Calendar c = Calendar.getInstance();
+				SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+				String strTime = sdf.format(c.getTime());
+
 				JSInterface.updateNewLocation(webView, location);
-				setTitle(concatBuildingAndFloorName(mCurrentSelectedFloor));	
+				setTitle(concatBuildingAndFloorName(mCurrentSelectedFloor) + ", location updated at " + strTime);
 				lastUpdatedLocation = new Location(location); //NB: Important to COPY as done here. 
     		}    		
 		}

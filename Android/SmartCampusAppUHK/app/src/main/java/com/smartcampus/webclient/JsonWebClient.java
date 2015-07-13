@@ -27,6 +27,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.smartcampus.webclient;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,6 +55,8 @@ import com.smartcampus.wifi.Histogram;
 import com.smartcampus.wifi.WifiMeasurement;
 
 public class JsonWebClient implements IWebClient {
+
+	private static final String TAG = "JsonWebClient";
 
 	@Override
 	public int addBuilding(Building b) {
@@ -260,6 +264,7 @@ public class JsonWebClient implements IWebClient {
     	}
     	catch (Exception ex) 
     	{
+            Log.e(TAG, Log.getStackTraceString(ex));
     		return null;
     	}    	
     }
@@ -282,6 +287,7 @@ public class JsonWebClient implements IWebClient {
 		   	}
 		   	catch (Exception ex)
 		   	{
+				Log.e(TAG, Log.getStackTraceString(ex));
 		   		return null;
 		   	}
 		   	
@@ -335,6 +341,7 @@ public class JsonWebClient implements IWebClient {
 		   	}
 	       catch (JSONException ex)
 	       {
+			   Log.e(TAG, Log.getStackTraceString(ex));
 	    	   return null;
 	       }
 	       return res;
@@ -377,6 +384,7 @@ public class JsonWebClient implements IWebClient {
      }
      catch (Exception ex)
      {
+		 Log.e(TAG, Log.getStackTraceString(ex));
          throw ex;            
      }
      return res;     

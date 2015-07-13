@@ -284,6 +284,7 @@ public class LocationService extends Service implements SensorEventListener {
 					cLastAvailableBuildingDownload = new Date();
 				}
 				catch (Exception ex1) { //IOException will most likely be the cause
+					Log.e(TAG, Log.getStackTraceString(ex1));
 					downloadMsg = ex1.getCause() != null ? ex1.getCause().getMessage() : ex1.getMessage();
 					setWifiStatus(STATUS_CONNECTION_PROBLEM);
 					return null;
@@ -322,7 +323,8 @@ public class LocationService extends Service implements SensorEventListener {
 						fullBuilding = webClient.downloadRadioMap(CurrentBuilding.getBuildingID());
 					}
 					catch (Exception ex2) {
-						downloadMsg = ex2.getCause() != null ? ex2.getCause().getMessage() : ex2.getMessage();				
+						Log.e(TAG, Log.getStackTraceString(ex2));
+						downloadMsg = ex2.getCause() != null ? ex2.getCause().getMessage() : ex2.getMessage();
 					}
 					if (fullBuilding != null)
 					{
@@ -826,7 +828,7 @@ public class LocationService extends Service implements SensorEventListener {
 		for (Building b : downloadedBuildings)
 		{
 			//ignore the vertex graveyard (has id 18 and name 'VERTEX_GRAVEYARD')
-			if (b.getName() != null && b.getName().startsWith("VERTEX_GRAVEYARD"))
+			if (b.getName() != null && (b.getName().startsWith("VERTEX_GRAVEYARD") || b.getName().startsWith("DUMMY_")))
 				continue;
 			else	
 				result.add(b);

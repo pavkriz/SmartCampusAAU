@@ -33,7 +33,7 @@ import android.os.Bundle;
 import android.webkit.WebView;
 
 public class WebMap extends Activity {
-	private static final String TILES_URL = "http://smartcampus.cs.aau.dk/tiles/sl300/aalborg.php";
+	private static final String TILES_URL = "http://beacon.uhk.cz/webview/index.html";
 	private WebView webView;
     
 	@Override

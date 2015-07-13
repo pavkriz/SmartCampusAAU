@@ -43,6 +43,8 @@ import android.util.Log;
  */
 public class WifiPosEngine {
 
+	private static final String TAG = WifiPosEngine.class.getName();
+
 	private Building mCurrentBuilding;
 	private IGraph mGraph;
 	private Iterable<Vertex> secondarySearchSpace;	
@@ -138,7 +140,7 @@ public class WifiPosEngine {
 			bestEstimate.setBcsVertices(BestCandidateSet.getAllVerticesSorted());
 			return bestEstimate;
 		} catch (Exception e) {
-			Log.e(this.getClass().getSimpleName(), "Exception: "+Log.getStackTraceString(e));
+			Log.e(TAG, "Exception: "+Log.getStackTraceString(e));
 			return null;
 		}
     }

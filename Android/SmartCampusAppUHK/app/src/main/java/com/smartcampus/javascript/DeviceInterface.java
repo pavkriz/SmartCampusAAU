@@ -27,6 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.smartcampus.javascript;
 
+import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
 import com.smartcampus.android.ui.maps.WebMap2D;
@@ -54,6 +55,7 @@ public class DeviceInterface {
 	 * an alert dialog (it is not possible to call javascript's alert)		
 	 * @param msg
 	 */
+	@JavascriptInterface
 	public void debugAlert(String msg)
 	{
 		Toast toast = Toast.makeText(mTarget, msg, Toast.LENGTH_LONG);
@@ -68,6 +70,7 @@ public class DeviceInterface {
 	 * @param floorNum The current floor 
 	 * @param vertexId The id of the selected (tapped) vertex.
 	 */
+	@JavascriptInterface
 	public void onTap(boolean isOnline, int floorNum, int vertexId)
 	{
 		mTarget.onTap(floorNum, vertexId);
@@ -82,6 +85,7 @@ public class DeviceInterface {
 	 * @param lat the latitude of the tapped location
 	 * @param lon the longitude of the tapped location
 	 */
+	@JavascriptInterface
 	public void setSelectedLocation(boolean isOnline, int floor, double lat, double lon)
 	{
 		mTarget.setSelectedLocation(isOnline, floor, lat, lon);
@@ -102,6 +106,7 @@ public class DeviceInterface {
 	 * @param originId
 	 * @param destinationId
 	 */
+	@JavascriptInterface
 	public void removeLink(int originId, int destinationId)
 	{
 		if (!(mTarget instanceof WebMap2DAddEdge))
@@ -115,6 +120,7 @@ public class DeviceInterface {
 	 * This method is called (from Javascript) when tiles are loaded,
 	 * so we call our own setMapReady which centers at the building and updates overlays.
 	 */
+	@JavascriptInterface
 	public void setMapReady()
 	{	
 		mTarget.setMapReady();

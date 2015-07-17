@@ -427,7 +427,7 @@ public class WebMap2DOffline extends WebMap2D {
 	 * @param lon the longitude of the tapped location
 	 */
 	@Override
-	public void setSelectedLocation(boolean isOnline, int floor, double lat, double lon) {
+	public void setSelectedLocation(boolean isOnline, int floor,final double lat, final double lon) {
 		//TODO: Issue with no-showing marker maybe caused by too many decimals?		
 		
 		Vertex v = new Vertex(-1, new AbsoluteLocation(lat, lon, floor));
@@ -435,7 +435,13 @@ public class WebMap2DOffline extends WebMap2D {
 		title.append("Unbound: ").append(floor).append(";").append(lat).append("; ").append(lon);
 		
 		updateSelectedVertex(v, title.toString(), false);
-		JSInterface.showSelectedLocation(webView, lat, lon);
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				JSInterface.showSelectedLocation(webView, lat, lon);
+			}
+		});
+
 	}
 	
 	public void updateSelectedVertex(Vertex selectedVertex, String title, boolean isBound)

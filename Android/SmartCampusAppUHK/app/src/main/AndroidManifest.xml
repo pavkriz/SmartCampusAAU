@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.smartcampus"
     android:versionCode="1"
     android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="10"/>
 
-    <application tools:replace="android:label"
+    <application android:allowBackup="true"
      	android:icon="@drawable/knap_end_lille"
      	android:label="@string/app_name">
                   
@@ -19,11 +17,13 @@
              android:label="@string/app_name">        
         </activity>
         
+        <!--
         <activity
              android:name=".android.ui.maps.WebMap2D"
         	 android:configChanges="orientation|keyboardHidden"
              android:label="@string/app_name">        
         </activity>
+        -->
         
 <!-- ************************ ONLINE ACTIVITIES - BEGIN ************************************ -->
         

@@ -536,8 +536,7 @@ public abstract class WebMap2D extends Activity {
 	public abstract void setSelectedLocation(boolean isOnline, int floor, double lat, double lon);
     
 	//Replace a string level with an int level
-	@SuppressLint("SetJavaScriptEnabled")
-	private void setupWebView() {    	
+	private void setupWebView() {
     	
     	webView.getSettings().setJavaScriptEnabled(true);
     	//JSInterface

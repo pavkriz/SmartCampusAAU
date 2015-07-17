@@ -1,25 +1,30 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 'Google Inc.:Google APIs:10'
+    compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     defaultConfig {
         applicationId "com.smartcampus"
-
         testApplicationId "com.smartcampus"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
+        minSdkVersion 21
+        targetSdkVersion 21
+        versionName '1.0'
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    productFlavors {
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:18.0.0'
     compile files('libs/odata4j-clientbundle-0.5-hacked.jar')
+    compile 'com.android.support:support-v4:22.1.1'
 }
